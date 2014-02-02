@@ -14,9 +14,21 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    //自定义
+    [[NSBundle mainBundle] loadNibNamed:@"BINTabBarController" owner:self options:nil];
+//    self.window.rootViewController = self.rootController;
+    [self.window setRootViewController: self.rootController];
+    [self.window addSubview:self.rootController.view];
+
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+  
+    
     return YES;
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

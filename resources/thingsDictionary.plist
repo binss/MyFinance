@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>吃饭</key>
+	<array>
+		<string>饭堂</string>
+		<string>精通</string>
+		<string>穗石</string>
+		<string>贝岗</string>
+		<string>外卖</string>
+		<string>聚餐</string>
+	</array>
+	<key>购物</key>
+	<array>
+		<string>世博</string>
+		<string>好又多</string>
+		<string>小卖部</string>
+		<string>便利店</string>
+		<string>饭堂</string>
+	</array>
+	<key>网购</key>
+	<array>
+		<string>淘宝</string>
+		<string>天猫</string>
+		<string>京东</string>
+		<string>亚马逊</string>
+	</array>
+	<key>交通</key>
+	<array>
+		<string>公交</string>
+		<string>地铁</string>
+		<string>打的</string>
+	</array>
+	<key>娱乐</key>
+	<array>
+		<string>唱K</string>
+		<string>外出</string>
+		<string>运动</string>
+	</array>
+</dict>
+</plist>

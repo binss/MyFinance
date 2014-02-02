@@ -11,5 +11,6 @@
 @interface BINAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) IBOutlet UITabBarController * rootController;
 
 @end

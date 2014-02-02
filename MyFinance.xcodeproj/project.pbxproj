@@ -19,6 +19,15 @@
 		34335E9D189DF4D000FF00B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E85189DF4D000FF00B7 /* UIKit.framework */; };
 		34335EA5189DF4D000FF00B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34335EA3189DF4D000FF00B7 /* InfoPlist.strings */; };
 		34335EA7189DF4D000FF00B7 /* MyFinanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 34335EA6189DF4D000FF00B7 /* MyFinanceTests.m */; };
+		34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34335F30189DFABD00FF00B7 /* BINMainViewController.m */; };
+		34335F33189DFABD00FF00B7 /* BINMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F31189DFABD00FF00B7 /* BINMainViewController.xib */; };
+		34335F37189E10BB00FF00B7 /* BINTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F36189E10BB00FF00B7 /* BINTabBarController.xib */; };
+		34335F4C189E1A3B00FF00B7 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F49189E1A3B00FF00B7 /* calendar@2x.png */; };
+		34335F4D189E1A3B00FF00B7 /* main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F4A189E1A3B00FF00B7 /* main@2x.png */; };
+		34335F4E189E1A3B00FF00B7 /* write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F4B189E1A3B00FF00B7 /* write@2x.png */; };
+		34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34335F50189E1AD800FF00B7 /* BINWriteViewController.m */; };
+		34335F53189E1AD800FF00B7 /* BINWriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */; };
+		34E93E57189E74FB007C790C /* thingsDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E93E56189E74FB007C790C /* thingsDictionary.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +57,17 @@
 		34335EA2189DF4D000FF00B7 /* MyFinanceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyFinanceTests-Info.plist"; sourceTree = "<group>"; };
 		34335EA4189DF4D000FF00B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		34335EA6189DF4D000FF00B7 /* MyFinanceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFinanceTests.m; sourceTree = "<group>"; };
+		34335F2F189DFABD00FF00B7 /* BINMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINMainViewController.h; sourceTree = "<group>"; };
+		34335F30189DFABD00FF00B7 /* BINMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINMainViewController.m; sourceTree = "<group>"; };
+		34335F31189DFABD00FF00B7 /* BINMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINMainViewController.xib; sourceTree = "<group>"; };
+		34335F36189E10BB00FF00B7 /* BINTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINTabBarController.xib; sourceTree = "<group>"; };
+		34335F49189E1A3B00FF00B7 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		34335F4A189E1A3B00FF00B7 /* main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main@2x.png"; sourceTree = "<group>"; };
+		34335F4B189E1A3B00FF00B7 /* write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write@2x.png"; sourceTree = "<group>"; };
+		34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BINWriteViewController.h; path = ../BINWriteViewController.h; sourceTree = "<group>"; };
+		34335F50189E1AD800FF00B7 /* BINWriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BINWriteViewController.m; path = ../BINWriteViewController.m; sourceTree = "<group>"; };
+		34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BINWriteViewController.xib; path = ../BINWriteViewController.xib; sourceTree = "<group>"; };
+		34E93E56189E74FB007C790C /* thingsDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = thingsDictionary.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +127,18 @@
 		34335E87189DF4D000FF00B7 /* MyFinance */ = {
 			isa = PBXGroup;
 			children = (
+				34E93E55189E74B7007C790C /* resources */,
+				34335F48189E1A3B00FF00B7 /* pic */,
 				34335E90189DF4D000FF00B7 /* BINAppDelegate.h */,
 				34335E91189DF4D000FF00B7 /* BINAppDelegate.m */,
 				34335E93189DF4D000FF00B7 /* Images.xcassets */,
+				34335F36189E10BB00FF00B7 /* BINTabBarController.xib */,
+				34335F2F189DFABD00FF00B7 /* BINMainViewController.h */,
+				34335F30189DFABD00FF00B7 /* BINMainViewController.m */,
+				34335F31189DFABD00FF00B7 /* BINMainViewController.xib */,
+				34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */,
+				34335F50189E1AD800FF00B7 /* BINWriteViewController.m */,
+				34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */,
 				34335E88189DF4D000FF00B7 /* Supporting Files */,
 			);
 			path = MyFinance;
@@ -143,6 +172,24 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		34335F48189E1A3B00FF00B7 /* pic */ = {
+			isa = PBXGroup;
+			children = (
+				34335F49189E1A3B00FF00B7 /* calendar@2x.png */,
+				34335F4A189E1A3B00FF00B7 /* main@2x.png */,
+				34335F4B189E1A3B00FF00B7 /* write@2x.png */,
+			);
+			path = pic;
+			sourceTree = SOURCE_ROOT;
+		};
+		34E93E55189E74B7007C790C /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				34E93E56189E74FB007C790C /* thingsDictionary.plist */,
+			);
+			path = resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -221,7 +268,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				34335E8C189DF4D000FF00B7 /* InfoPlist.strings in Resources */,
+				34335F37189E10BB00FF00B7 /* BINTabBarController.xib in Resources */,
 				34335E94189DF4D000FF00B7 /* Images.xcassets in Resources */,
+				34335F4D189E1A3B00FF00B7 /* main@2x.png in Resources */,
+				34335F4E189E1A3B00FF00B7 /* write@2x.png in Resources */,
+				34335F33189DFABD00FF00B7 /* BINMainViewController.xib in Resources */,
+				34335F53189E1AD800FF00B7 /* BINWriteViewController.xib in Resources */,
+				34335F4C189E1A3B00FF00B7 /* calendar@2x.png in Resources */,
+				34E93E57189E74FB007C790C /* thingsDictionary.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +296,8 @@
 			files = (
 				34335E92189DF4D000FF00B7 /* BINAppDelegate.m in Sources */,
 				34335E8E189DF4D000FF00B7 /* main.m in Sources */,
+				34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */,
+				34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +498,7 @@
 				34335EAC189DF4D000FF00B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34335EAD189DF4D000FF00B7 /* Build configuration list for PBXNativeTarget "MyFinanceTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +507,7 @@
 				34335EAF189DF4D000FF00B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
