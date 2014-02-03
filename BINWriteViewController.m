@@ -64,37 +64,11 @@
     [self.EventPicker selectRow:row inComponent:0 animated:NO];
     
 
-    
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSDate *now = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
-    
-    int year = [dateComponent year];
-    int month = [dateComponent month];
-    int day = [dateComponent day];
-    int hour = [dateComponent hour];
-    int minute = [dateComponent minute];
-    int second = [dateComponent second];
-    
-    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%i",year,month,day,hour,minute];
-    
-    NSLog(@"year is: %d", year);
-    
-    NSLog(@"month is: %d", month);
-    
-    NSLog(@"day is: %d", day);
-    
-    NSLog(@"hour is: %d", hour);
-    
-    NSLog(@"minute is: %d", minute);
-    
-    NSLog(@"second is: %d", second);
+    [self resetTime];
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,27 +86,56 @@
         case 0:
         {
             self.EventPicker.hidden = NO;
-            self.incomeEventType.hidden = YES;
+            self.TypeLabel.hidden = NO;
             self.TypeLabel.text = @"支出：";
+            self.moneyField.hidden = NO;
+            self.contentLabel.hidden = NO;
+            self.contentField.hidden = NO;
+            self.incomeEventType.hidden = YES;
+            self.otherContentLabel.hidden = YES;
+            self.otherContentField.hidden = YES;
+            [self resetContent];
             break;
         }
         case 1:
         {
             self.EventPicker.hidden = YES;
-            self.incomeEventType.hidden = NO;
+            self.TypeLabel.hidden = NO;
             self.TypeLabel.text = @"收入：";
+            self.moneyField.hidden = NO;
+            self.contentLabel.hidden = NO;
+            self.contentField.hidden = NO;
+            self.incomeEventType.hidden = NO;
+            self.otherContentLabel.hidden = YES;
+            self.otherContentField.hidden = YES;
+            [self resetContent];
+            break;
+        }
+        case 2:
+        {
+            self.EventPicker.hidden = YES;
+            self.TypeLabel.hidden = YES;
+            self.moneyField.hidden = YES;
+            self.contentLabel.hidden = YES;
+            self.contentField.hidden = YES;
+            self.incomeEventType.hidden = YES;
+            self.otherContentLabel.hidden = NO;
+            self.otherContentField.hidden = NO;
+            [self resetContent];
             break;
         }
     }
 }
 
-- (IBAction)EventTypeSelected:(UISegmentedControl *)sender {
+- (IBAction)EventTypeSelected:(UISegmentedControl *)sender
+{
 }
 
 - (IBAction)backgroundTap:(id)sender
 {
     [self.moneyField resignFirstResponder];
     [self.contentField resignFirstResponder];
+    [self.otherContentField resignFirstResponder];
     [self resumeView];
 
 }
@@ -149,6 +152,39 @@
     NSLog(@"%@",title);
     
 }
+
+- (IBAction)resetButtonPressed:(UIButton *)sender
+{
+    [self resetContent];
+    [self resetTime];
+}
+
+- (void)resetContent
+{
+    self.moneyField.text = @"";
+    self.contentField.text = @"";
+    self.incomeEventType.selectedSegmentIndex = 0;
+    self.otherContentField.text = @"点击此处输入要记录的事项内容";
+    
+    
+}
+
+- (void)resetTime
+{
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+    
+    int year = [dateComponent year];
+    int month = [dateComponent month];
+    int day = [dateComponent day];
+    int hour = [dateComponent hour];
+    int minute = [dateComponent minute];
+    
+    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%i",year,month,day,hour,minute];
+}
+
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -194,7 +230,7 @@
     float width = self.view.frame.size.width;
     float height = self.view.frame.size.height;
     //上移30个单位，按实际情况设置
-    CGRect rect=CGRectMake(0.0f,-140,width,height);
+    CGRect rect=CGRectMake(0.0f,-150,width,height);
     self.view.frame=rect;
     [UIView commitAnimations];
     return YES; 
