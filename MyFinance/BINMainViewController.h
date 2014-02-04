@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XYPieChart.h"
 
-@interface BINMainViewController : UIViewController
+@interface BINMainViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
+
+@property float thisMonthIncome;
+@property float thisMonthExpense;
+@property (weak, nonatomic) IBOutlet UILabel *income;
+@property (weak, nonatomic) IBOutlet UILabel *expense;
+@property (weak, nonatomic) IBOutlet UILabel *date;
+
+@property (strong, nonatomic) IBOutlet XYPieChart *pieChartIncome;
+@property (strong, nonatomic) IBOutlet XYPieChart *pieChartExpense;
+
+@property(nonatomic, strong) NSMutableArray *slices;
+@property(nonatomic, strong) NSArray        *sliceColors;
 
 @end

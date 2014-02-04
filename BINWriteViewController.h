@@ -17,11 +17,19 @@
 @property (strong,nonatomic) NSDictionary * detailNamesDictionary;
 
 //重要属性
-@property (strong,nonatomic) NSString *time;
+@property (strong,nonatomic) NSString * currentFilePath;
+
+@property int year;
+@property int month;
+@property int day;
+@property int hour;
+@property int minute;
+
 @property (strong,nonatomic) NSString *type;
-@property int money;
 @property (strong,nonatomic) NSString *content;
 
+@property float income;
+@property float expense;
 
 
 
@@ -45,7 +53,6 @@
 
 
 
-- (IBAction)EventTypeSelected:(UISegmentedControl *)sender;
 
 - (IBAction)backgroundTap:(id)sender;
 - (IBAction)submitButtonPressed:(UIButton *)sender;

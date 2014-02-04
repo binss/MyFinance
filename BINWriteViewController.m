@@ -14,8 +14,15 @@
 
 @implementation BINWriteViewController
 
-
-
+@synthesize currentFilePath;
+@synthesize year;
+@synthesize month;
+@synthesize day;
+@synthesize hour;
+@synthesize minute;
+@synthesize type;
+@synthesize income;
+@synthesize expense;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,6 +70,13 @@
     //左侧组件选中第row行
     [self.EventPicker selectRow:row inComponent:0 animated:NO];
     
+    
+    //数据初始化
+    type = @"expense";
+    [self resetTime];
+    [self loadFile];
+
+    
 
 }
 
@@ -85,6 +99,7 @@
     {
         case 0:
         {
+            type = @"expense";
             self.EventPicker.hidden = NO;
             self.TypeLabel.hidden = NO;
             self.TypeLabel.text = @"支出：";
@@ -99,6 +114,7 @@
         }
         case 1:
         {
+            type = @"income";
             self.EventPicker.hidden = YES;
             self.TypeLabel.hidden = NO;
             self.TypeLabel.text = @"收入：";
@@ -113,6 +129,7 @@
         }
         case 2:
         {
+            type = @"other";
             self.EventPicker.hidden = YES;
             self.TypeLabel.hidden = YES;
             self.moneyField.hidden = YES;
@@ -127,9 +144,6 @@
     }
 }
 
-- (IBAction)EventTypeSelected:(UISegmentedControl *)sender
-{
-}
 
 - (IBAction)backgroundTap:(id)sender
 {
@@ -147,9 +161,38 @@
     
     NSString *thingSelected = self.thingNames[thingRow];
     NSString *detailSelected = self.detailNames[detailRow];
-
-    NSString *title = [[NSString alloc] initWithFormat:@"%@ %@!",thingSelected,detailSelected];
-    NSLog(@"%@",title);
+    
+    NSString *content;
+    
+    if(![type compare:@"expense"])
+    {
+        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%@_%.2f_%@",hour,minute,type,thingSelected,detailSelected,self.moneyField.text.floatValue,self.contentField.text];
+        expense = expense + self.moneyField.text.floatValue;
+    }
+    
+    NSString *incomeType;
+    if(![type compare:@"income"])
+    {
+        switch(self.incomeEventType.selectedSegmentIndex)
+        {
+            case 0: incomeType = @"出粮";break;
+            case 1: incomeType = @"提款";break;
+            case 2: incomeType = @"收益";break;
+        }
+        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%.2f_%@",hour,minute,type,incomeType,
+                   self.moneyField.text.floatValue,self.contentField.text];
+        
+        income = income + self.moneyField.text.floatValue;
+    }
+    
+    if(![type compare:@"other"])
+    {
+        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@",hour,minute,type,self.otherContentField.text];
+    }
+    
+    [self writeFile:content];
+    
+    
     
 }
 
@@ -157,32 +200,6 @@
 {
     [self resetContent];
     [self resetTime];
-}
-
-- (void)resetContent
-{
-    self.moneyField.text = @"";
-    self.contentField.text = @"";
-    self.incomeEventType.selectedSegmentIndex = 0;
-    self.otherContentField.text = @"点击此处输入要记录的事项内容";
-    
-    
-}
-
-- (void)resetTime
-{
-    NSDate *now = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
-    
-    int year = [dateComponent year];
-    int month = [dateComponent month];
-    int day = [dateComponent day];
-    int hour = [dateComponent hour];
-    int minute = [dateComponent minute];
-    
-    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%i",year,month,day,hour,minute];
 }
 
 
@@ -249,4 +266,147 @@
     self.view.frame=rect;
     [UIView commitAnimations];
 }
+
+//---------逻辑部分
+- (void)resetContent
+{
+    self.moneyField.text = @"";
+    self.contentField.text = @"";
+    self.incomeEventType.selectedSegmentIndex = 0;
+    self.otherContentField.text = @"点击此处输入要记录的事项内容";
+    
+    
+}
+
+- (void)resetTime
+{
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+    
+    year = [dateComponent year];
+    month = [dateComponent month];
+    day = [dateComponent day];
+    hour = [dateComponent hour];
+    minute = [dateComponent minute];
+    
+    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%i",year,month,day,hour,minute];
+}
+
+- (NSString *)getDataFilePath:(int)Tyear setMonth:(int)Tmonth
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *name = [[NSString alloc] initWithFormat:@"data_%i_%i.plist",Tyear,Tmonth];
+
+    return [documentsDirectory stringByAppendingPathComponent:name];
+}
+
+- (void)loadFile
+{
+    NSString *filePath = [self getDataFilePath:year setMonth:month];
+
+    //该月份事件的字典
+    NSMutableDictionary *dictionary;
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //如果存在
+    {
+        dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+        NSString *Tincome = [dictionary objectForKey:@"income"];
+        NSString *Texpense = [dictionary objectForKey:@"expense"];
+        income = Tincome.floatValue;
+        expense = Texpense.floatValue;
+    }
+    else
+    {
+        income = 0;
+        expense = 0;
+    }
+
+
+//    NSString *filePath = [self getDataFilePath:year setMonth:month];
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //检测文件是否存在
+//    {
+//        NSDictionary *monthDataDictionary = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+//        
+//        //获取字典中的所有键，存入allThingNames数组
+//        NSArray *allKeys = [monthDataDictionary allKeys];
+//        for(int i = 0; i < [allKeys count]; i++)
+//        {
+//            NSString *selectedKeyName = allKeys[i];
+//            if(![selectedKeyName compare:@"income"])
+//            {
+//                //记录收入
+//                continue;
+//            }
+//            if(![selectedKeyName compare:@"expense"])
+//            {
+//                //记录支出
+//                continue;
+//            }
+//            NSLog(@"%@",selectedKeyName);
+////            self.detailNames = self.detailNamesDictionary[selectedThingName];
+//
+//        }
+//
+//    }
+}
+
+- (void)writeFile:(NSString *)thing
+{
+    //获取字典路径
+    NSString *filePath = [self getDataFilePath:year setMonth:month];
+    NSLog(@"%@",filePath);
+    
+    //该月份事件的字典
+    NSMutableDictionary *dictionary;
+    //该天事件的数组
+    NSMutableArray *thingList;
+    
+    NSString * key = [[NSString alloc] initWithFormat:@"%i-%i-%i",year,month,day];
+
+    //检测文件(字典)是否存在，如果不存在，则新建
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //如果存在
+    {
+        dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath ];
+        thingList = [dictionary objectForKey:key];
+        
+        //如果该天的数组不存在，则新建
+        if(thingList == NULL)
+        {
+            thingList = [NSMutableArray arrayWithCapacity:1];
+            NSLog(@"Creat");
+        }
+    }
+    else
+    {
+        NSLog(@"creat file");
+        dictionary = [NSMutableDictionary dictionaryWithCapacity:40];
+        thingList = [NSMutableArray arrayWithCapacity:1];
+
+    }
+    //把事件(string)添加入数组中
+    [thingList addObject:thing];
+
+    //把数组写入字典中
+    [dictionary setObject:thingList forKey:key];
+
+    //把收入和支出
+    NSLog(@"%f",expense);
+    [dictionary setObject:[NSString stringWithFormat:@"%.2f",income] forKey:@"income"];
+    [dictionary setObject:[NSString stringWithFormat:@"%.2f",expense] forKey:@"expense"];
+    
+    //把字典写入文件中
+    [dictionary writeToFile:filePath atomically:YES];
+    
+    //发送消息，更新主界面信息
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
+
+}
+
+
+
 @end

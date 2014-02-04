@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		341FCA8718A133970045BE91 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 341FCA8618A133970045BE91 /* XYPieChart.m */; };
 		34335E82189DF4D000FF00B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E81189DF4D000FF00B7 /* Foundation.framework */; };
 		34335E84189DF4D000FF00B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E83189DF4D000FF00B7 /* CoreGraphics.framework */; };
 		34335E86189DF4D000FF00B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E85189DF4D000FF00B7 /* UIKit.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341FCA8518A133970045BE91 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		341FCA8618A133970045BE91 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		34335E7E189DF4D000FF00B7 /* MyFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34335E81189DF4D000FF00B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34335E83189DF4D000FF00B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		341FCA8418A133970045BE91 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				341FCA8518A133970045BE91 /* XYPieChart.h */,
+				341FCA8618A133970045BE91 /* XYPieChart.m */,
+			);
+			path = tools;
+			sourceTree = SOURCE_ROOT;
+		};
 		34335E75189DF4D000FF00B7 = {
 			isa = PBXGroup;
 			children = (
@@ -127,8 +139,7 @@
 		34335E87189DF4D000FF00B7 /* MyFinance */ = {
 			isa = PBXGroup;
 			children = (
-				34E93E55189E74B7007C790C /* resources */,
-				34335F48189E1A3B00FF00B7 /* pic */,
+				341FCA8418A133970045BE91 /* tools */,
 				34335E90189DF4D000FF00B7 /* BINAppDelegate.h */,
 				34335E91189DF4D000FF00B7 /* BINAppDelegate.m */,
 				34335E93189DF4D000FF00B7 /* Images.xcassets */,
@@ -139,6 +150,8 @@
 				34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */,
 				34335F50189E1AD800FF00B7 /* BINWriteViewController.m */,
 				34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */,
+				34335F48189E1A3B00FF00B7 /* pic */,
+				34E93E55189E74B7007C790C /* resources */,
 				34335E88189DF4D000FF00B7 /* Supporting Files */,
 			);
 			path = MyFinance;
@@ -297,6 +310,7 @@
 				34335E92189DF4D000FF00B7 /* BINAppDelegate.m in Sources */,
 				34335E8E189DF4D000FF00B7 /* main.m in Sources */,
 				34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */,
+				341FCA8718A133970045BE91 /* XYPieChart.m in Sources */,
 				34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

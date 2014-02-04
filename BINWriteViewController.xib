@@ -84,7 +84,7 @@
                     <rect key="frame" x="120" y="299" width="66" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="1CE-Dx-k2n"/>
                     </connections>
@@ -113,9 +113,6 @@
                         <segment title="提款"/>
                         <segment title="收益"/>
                     </segments>
-                    <connections>
-                        <action selector="EventTypeSelected:" destination="-1" eventType="valueChanged" id="h4t-mq-ijP"/>
-                    </connections>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="事件记录：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m5-pt-hJv">
                     <rect key="frame" x="20" y="34" width="121" height="29"/>
