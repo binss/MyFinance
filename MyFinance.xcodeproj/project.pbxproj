@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		341FCA8718A133970045BE91 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 341FCA8618A133970045BE91 /* XYPieChart.m */; };
+		341FCA8B18A14CC00045BE91 /* BINExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */; };
+		341FCA8C18A14CC00045BE91 /* BINExpenseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */; };
 		34335E82189DF4D000FF00B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E81189DF4D000FF00B7 /* Foundation.framework */; };
 		34335E84189DF4D000FF00B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E83189DF4D000FF00B7 /* CoreGraphics.framework */; };
 		34335E86189DF4D000FF00B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34335E85189DF4D000FF00B7 /* UIKit.framework */; };
@@ -44,6 +46,9 @@
 /* Begin PBXFileReference section */
 		341FCA8518A133970045BE91 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		341FCA8618A133970045BE91 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		341FCA8818A14CC00045BE91 /* BINExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINExpenseViewController.h; sourceTree = "<group>"; };
+		341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINExpenseViewController.m; sourceTree = "<group>"; };
+		341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINExpenseViewController.xib; sourceTree = "<group>"; };
 		34335E7E189DF4D000FF00B7 /* MyFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34335E81189DF4D000FF00B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34335E83189DF4D000FF00B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,6 +155,9 @@
 				34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */,
 				34335F50189E1AD800FF00B7 /* BINWriteViewController.m */,
 				34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */,
+				341FCA8818A14CC00045BE91 /* BINExpenseViewController.h */,
+				341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */,
+				341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */,
 				34335F48189E1A3B00FF00B7 /* pic */,
 				34E93E55189E74B7007C790C /* resources */,
 				34335E88189DF4D000FF00B7 /* Supporting Files */,
@@ -281,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34335E8C189DF4D000FF00B7 /* InfoPlist.strings in Resources */,
+				341FCA8C18A14CC00045BE91 /* BINExpenseViewController.xib in Resources */,
 				34335F37189E10BB00FF00B7 /* BINTabBarController.xib in Resources */,
 				34335E94189DF4D000FF00B7 /* Images.xcassets in Resources */,
 				34335F4D189E1A3B00FF00B7 /* main@2x.png in Resources */,
@@ -308,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34335E92189DF4D000FF00B7 /* BINAppDelegate.m in Sources */,
+				341FCA8B18A14CC00045BE91 /* BINExpenseViewController.m in Sources */,
 				34335E8E189DF4D000FF00B7 /* main.m in Sources */,
 				34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */,
 				341FCA8718A133970045BE91 /* XYPieChart.m in Sources */,

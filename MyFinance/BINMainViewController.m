@@ -16,7 +16,6 @@
 @synthesize thisMonthIncome;
 @synthesize thisMonthExpense;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +29,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+//    UIViewController *vc1=[[UIViewController alloc] init];
+
+    
+    
+    
+    
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector (resetData:) name:@"resetData" object:nil];
     [self loadFile];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
@@ -38,7 +43,8 @@
     self.slices = [NSMutableArray arrayWithCapacity:10];
     for(int i = 0; i < 5; i ++)
     {
-        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
+//        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
+        NSNumber *one = [NSNumber numberWithInt:20];
         [self.slices addObject:one];
     }
     
@@ -54,11 +60,11 @@
     [self.pieChartIncome setStartPieAngle:M_PI_2];
     [self.pieChartIncome setAnimationSpeed:1.0];
     [self.pieChartIncome setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:24]];
-    [self.pieChartIncome setLabelRadius:100];
+    [self.pieChartIncome setLabelRadius:50];
     [self.pieChartIncome setShowPercentage:YES];
     [self.pieChartIncome setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
 //    [self.pieChartIncome setPieCenter:CGPointMake(240, 240)];
-    [self.pieChartIncome setUserInteractionEnabled:NO];
+    [self.pieChartIncome setUserInteractionEnabled:YES];
     
     [self.pieChartIncome reloadData];
 
@@ -147,6 +153,7 @@
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
     NSLog(@"did select slice at index %d",index);
+    //显示相关的内容～～～
 //    self.selectedSliceLabel.text = [NSString stringWithFormat:@"$%@",[self.slices objectAtIndex:index]];
 }
 
@@ -154,4 +161,11 @@
 
 
 
+- (IBAction)incomeDetailButtonPressed:(id)sender
+{
+    NSLog(@"call");
+    BINExpenseViewController *vc2=[[BINExpenseViewController alloc] init];
+    [self.navigationController pushViewController:vc2 animated:YES];
+//    [self presentModalViewController:vc2 animated:YES];
+}
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "XYPieChart.h"
+#import "BINExpenseViewController.h"
 
 @interface BINMainViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
 
@@ -22,5 +23,8 @@
 
 @property(nonatomic, strong) NSMutableArray *slices;
 @property(nonatomic, strong) NSArray        *sliceColors;
+
+
+- (IBAction)incomeDetailButtonPressed:(id)sender;
 
 @end

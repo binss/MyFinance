@@ -17,9 +17,16 @@
     
     //自定义
     [[NSBundle mainBundle] loadNibNamed:@"BINTabBarController" owner:self options:nil];
-//    self.window.rootViewController = self.rootController;
-    [self.window setRootViewController: self.rootController];
-    [self.window addSubview:self.rootController.view];
+    self.rootController.selectedIndex = 0;
+    self.window.rootViewController = self.rootController;
+    
+    
+    UINavigationController *navController =[[UINavigationController alloc] initWithRootViewController:self.window.rootViewController];
+    self.window.rootViewController = navController;
+    
+//    [self.window addSubview:navController.view];
+//    [self.window setRootViewController: self.rootController];
+//    [self.window addSubview:self.rootController.view];
 
     
     self.window.backgroundColor = [UIColor whiteColor];
