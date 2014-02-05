@@ -21,8 +21,12 @@
 @synthesize hour;
 @synthesize minute;
 @synthesize type;
+
+//注：数组的尾行为整数
 @synthesize income;
 @synthesize expense;
+
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -163,11 +167,17 @@
     NSString *detailSelected = self.detailNames[detailRow];
     
     NSString *content;
-    
+    float temp;
+    int totalRow;
     if(![type compare:@"expense"])
     {
         content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%@_%.2f_%@",hour,minute,type,thingSelected,detailSelected,self.moneyField.text.floatValue,self.contentField.text];
-        expense = expense + self.moneyField.text.floatValue;
+        
+        totalRow = [expense count] -1;
+        temp = [expense[thingRow] floatValue] + self.moneyField.text.floatValue;
+        [expense replaceObjectAtIndex:thingRow withObject:[NSNumber numberWithFloat:temp]];
+        temp = [expense[totalRow] floatValue] + self.moneyField.text.floatValue;
+        [expense replaceObjectAtIndex:totalRow withObject:[NSNumber numberWithFloat:temp]];
     }
     
     NSString *incomeType;
@@ -181,8 +191,13 @@
         }
         content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%.2f_%@",hour,minute,type,incomeType,
                    self.moneyField.text.floatValue,self.contentField.text];
-        
-        income = income + self.moneyField.text.floatValue;
+        totalRow = [income count] -1;
+
+        temp = [income[self.incomeEventType.selectedSegmentIndex] floatValue] + self.moneyField.text.floatValue;
+        [income replaceObjectAtIndex:self.incomeEventType.selectedSegmentIndex withObject:[NSNumber numberWithFloat:temp]];
+        temp = [income[totalRow] floatValue] + self.moneyField.text.floatValue;
+        [income replaceObjectAtIndex:totalRow withObject:[NSNumber numberWithFloat:temp]];
+
     }
     
     if(![type compare:@"other"])
@@ -315,15 +330,17 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //如果存在
     {
         dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-        NSString *Tincome = [dictionary objectForKey:@"income"];
-        NSString *Texpense = [dictionary objectForKey:@"expense"];
-        income = Tincome.floatValue;
-        expense = Texpense.floatValue;
+        NSMutableArray *incomeList = [dictionary objectForKey:@"income"];
+        NSMutableArray *expenseList = [dictionary objectForKey:@"expense"];
+        
+        income = incomeList;
+        expense = expenseList;
     }
     else
     {
-        income = 0;
-        expense = 0;
+        NSNumber *zero=[NSNumber numberWithFloat:0.00];
+        income = [[NSMutableArray alloc] initWithObjects:zero,zero,zero,zero,nil];
+        expense = [[NSMutableArray alloc] initWithObjects:zero,zero,zero,zero,zero,zero,nil];
     }
 
 
@@ -394,10 +411,9 @@
     //把数组写入字典中
     [dictionary setObject:thingList forKey:key];
 
-    //把收入和支出
-    NSLog(@"%f",expense);
-    [dictionary setObject:[NSString stringWithFormat:@"%.2f",income] forKey:@"income"];
-    [dictionary setObject:[NSString stringWithFormat:@"%.2f",expense] forKey:@"expense"];
+    //把收入和支出写入字典中
+    [dictionary setObject:income forKey:@"income"];
+    [dictionary setObject:expense forKey:@"expense"];
     
     //把字典写入文件中
     [dictionary writeToFile:filePath atomically:YES];
@@ -406,6 +422,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
 
 }
+
+
 
 
 

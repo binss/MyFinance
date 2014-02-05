@@ -9,22 +9,31 @@
 #import <UIKit/UIKit.h>
 #import "XYPieChart.h"
 #import "BINExpenseViewController.h"
+#import "BINIncomeViewController.h"
 
 @interface BINMainViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
 
 @property float thisMonthIncome;
 @property float thisMonthExpense;
-@property (weak, nonatomic) IBOutlet UILabel *income;
-@property (weak, nonatomic) IBOutlet UILabel *expense;
+@property (weak, nonatomic) IBOutlet UILabel *incomeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expenseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartIncome;
 @property (strong, nonatomic) IBOutlet XYPieChart *pieChartExpense;
 
-@property(nonatomic, strong) NSMutableArray *slices;
-@property(nonatomic, strong) NSArray        *sliceColors;
+@property(nonatomic, strong) NSMutableArray *incomeSlices;
+@property(nonatomic, strong) NSArray        *incomeSliceColors;
+@property(nonatomic, strong) NSMutableArray *expenseSlices;
+@property(nonatomic, strong) NSArray        *expenseSliceColors;
 
+@property (strong,nonatomic) NSMutableArray * income;
+@property (strong,nonatomic) NSMutableArray * expense;
 
-- (IBAction)incomeDetailButtonPressed:(id)sender;
+@property bool fileExist;
+
+- (IBAction)incomeDetailButtonPressed:(UIButton *)sender;
+- (IBAction)expenseDetailButtonPressed:(UIButton *)sender;
+
 
 @end

@@ -1,19 +1,21 @@
 //
-//  BINExpenseViewController.m
+//  BINIncomeViewController.m
 //  MyFinance
 //
 //  Created by bin on 14-2-5.
 //  Copyright (c) 2014年 bin. All rights reserved.
 //
 
-#import "BINExpenseViewController.h"
+#import "BINIncomeViewController.h"
 
-@interface BINExpenseViewController ()
+@interface BINIncomeViewController ()
 
 @end
 
-@implementation BINExpenseViewController
-@synthesize expense;
+@implementation BINIncomeViewController
+@synthesize income;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"支出统计";
+    self.title = @"收入统计";
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     
@@ -52,18 +54,14 @@
     
     [self.selectTotal setFont:[UIFont fontWithName:@"DBLCDTempBlack" size:20]];
     [self.selectPercent setFont:[UIFont fontWithName:@"DBLCDTempBlack" size:20]];
-    
-    
-    
-    
-    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-
+    
     [self.pieChart reloadData];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,21 +70,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setData:(NSMutableArray *)expenseData setState:(BOOL)fileExist
+- (void)setData:(NSMutableArray *)incomeData setState:(BOOL)fileExist
 {
     self.slices = [NSMutableArray arrayWithCapacity:5];
-    expense = expenseData;
+    income = incomeData;
     if(fileExist)
     {
         //图表数据更新
-        for(int i = 0; i < 5; i ++)
+        for(int i = 0; i < 3; i ++)
         {
-            NSNumber *temp = [NSNumber numberWithFloat:[expense[i] floatValue]];
+            NSNumber *temp = [NSNumber numberWithFloat:[income[i] floatValue]];
             [self.slices addObject:temp];
         }
         
     }
 }
+
 
 
 #pragma mark - XYPieChart Data Source
@@ -111,48 +110,36 @@
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
     self.showDetailPic.hidden = YES;
-    
     UIColor * color;
+
     switch (index)
     {
         case 0:
         {
-            self.selectName.text = @"吃饭";
+            self.selectName.text = @"出粮";
             color = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
             break;
         }
         case 1:
         {
-            self.selectName.text = @"购物";
+            self.selectName.text = @"提款";
             color = [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1];
             break;
         }
         case 2:
         {
-            self.selectName.text = @"交通";
+            self.selectName.text = @"收益";
             color = [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1];
-            break;
-        }
-        case 3:
-        {
-            self.selectName.text = @"网购";
-            color = [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1];
-            break;
-        }
-        case 4:
-        {
-            self.selectName.text = @"娱乐";
-            color = [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1];
             break;
         }
     }
     [self.selectName setTextColor:color];
     [self.selectTotal setTextColor:color];
     [self.selectPercent setTextColor:color];
-    self.selectTotal.text = [NSString stringWithFormat:@"金额：%.2f",[expense[index] floatValue]];
-    self.selectPercent.text = [NSString stringWithFormat:@"占比：%.2f%%",[expense[index] floatValue] * 100/[expense[5] floatValue]];
 
+    self.selectTotal.text = [NSString stringWithFormat:@"金额：%.2f",[income[index] floatValue]];
+    self.selectPercent.text = [NSString stringWithFormat:@"占比：%.2f%%",[income[index] floatValue] * 100/[income[3] floatValue]];
+    
 }
-
 
 @end

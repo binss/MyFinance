@@ -1,5 +1,5 @@
 //
-//  BINExpenseViewController.h
+//  BINIncomeViewController.h
 //  MyFinance
 //
 //  Created by bin on 14-2-5.
@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "XYPieChart.h"
 
-@interface BINExpenseViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
+@interface BINIncomeViewController : UIViewController <XYPieChartDelegate, XYPieChartDataSource>
 
-@property (strong,nonatomic) NSMutableArray *expense;
+@property(nonatomic, strong) NSMutableArray *slices;
+@property(nonatomic, strong) NSArray        *sliceColors;
+@property (strong,nonatomic) NSMutableArray *income;
 
-@property (strong,nonatomic) NSMutableArray *slices;
-@property (strong,nonatomic) NSArray        *sliceColors;
 
 @property (weak, nonatomic) IBOutlet XYPieChart *pieChart;
 @property (weak, nonatomic) IBOutlet UILabel *selectName;
@@ -22,7 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *selectPercent;
 @property (weak, nonatomic) IBOutlet UIImageView *showDetailPic;
 
-- (void)setData: (NSMutableArray *) expenseData setState:(BOOL) fileExist;
+
+
+
+- (void)setData: (NSMutableArray *) incomeData setState:(BOOL) fileExist;
 
 
 @end

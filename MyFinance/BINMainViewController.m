@@ -15,6 +15,10 @@
 @implementation BINMainViewController
 @synthesize thisMonthIncome;
 @synthesize thisMonthExpense;
+@synthesize income;
+@synthesize expense;
+@synthesize fileExist;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,54 +33,72 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    UIViewController *vc1=[[UIViewController alloc] init];
+
 
     
-    
-    
-    
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector (resetData:) name:@"resetData" object:nil];
-    [self loadFile];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
     
+    NSNumber *zero = [NSNumber numberWithFloat:0.0];
+
+    self.incomeSlices = [[NSMutableArray alloc] initWithObjects:zero,zero,zero,nil];
     
-    self.slices = [NSMutableArray arrayWithCapacity:10];
-    for(int i = 0; i < 5; i ++)
-    {
-//        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
-        NSNumber *one = [NSNumber numberWithInt:20];
-        [self.slices addObject:one];
-    }
+    self.expenseSlices = [[NSMutableArray alloc] initWithObjects:zero,zero,zero,zero,zero,nil];
     
-    self.sliceColors = [NSArray arrayWithObjects:
+    self.incomeSliceColors = [NSArray arrayWithObjects:
                         [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
                         [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
                         [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
                         [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
                         [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
     
+    self.expenseSliceColors = [NSArray arrayWithObjects:
+                               [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1],
+                               [UIColor colorWithRed:129/255.0 green:195/255.0 blue:29/255.0 alpha:1],
+                               [UIColor colorWithRed:62/255.0 green:173/255.0 blue:219/255.0 alpha:1],
+                               [UIColor colorWithRed:229/255.0 green:66/255.0 blue:115/255.0 alpha:1],
+                               [UIColor colorWithRed:148/255.0 green:141/255.0 blue:139/255.0 alpha:1],nil];
+
+    
+    //income 图表初始化
+    
     [self.pieChartIncome setDelegate:self];
     [self.pieChartIncome setDataSource:self];
     [self.pieChartIncome setStartPieAngle:M_PI_2];
     [self.pieChartIncome setAnimationSpeed:1.0];
-    [self.pieChartIncome setLabelFont:[UIFont fontWithName:@"DBLCDTempBlack" size:24]];
-    [self.pieChartIncome setLabelRadius:50];
+    [self.pieChartIncome setShowLabel:NO];
     [self.pieChartIncome setShowPercentage:YES];
     [self.pieChartIncome setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
-//    [self.pieChartIncome setPieCenter:CGPointMake(240, 240)];
-    [self.pieChartIncome setUserInteractionEnabled:YES];
+    [self.pieChartIncome setUserInteractionEnabled:NO];
     
+    
+    //expense 图表初始化
+
+    
+    [self.pieChartExpense setDelegate:self];
+    [self.pieChartExpense setDataSource:self];
+    [self.pieChartExpense setStartPieAngle:M_PI_2];
+    [self.pieChartExpense setAnimationSpeed:1.0];
+    [self.pieChartExpense setShowLabel:NO];
+    [self.pieChartExpense setShowPercentage:YES];
+    [self.pieChartExpense setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
+    [self.pieChartExpense setUserInteractionEnabled:NO];
+    
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
+
+
+
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self.pieChartIncome reloadData];
+    [self.pieChartExpense reloadData];
 
-    
-//    [self.pieChartRight setDelegate:self];
-//    [self.pieChartRight setDataSource:self];
-//    [self.pieChartRight setPieCenter:CGPointMake(240, 240)];
-//    [self.pieChartRight setShowPercentage:NO];
-    
-    
-
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -112,60 +134,106 @@
     if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //如果存在
     {
         dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
-        NSString *Tincome = [dictionary objectForKey:@"income"];
-        NSString *Texpense = [dictionary objectForKey:@"expense"];
-        thisMonthIncome = Tincome.floatValue;
-        thisMonthExpense = Texpense.floatValue;
+        income = [dictionary objectForKey:@"income"];
+        expense = [dictionary objectForKey:@"expense"];
+        thisMonthIncome = [income[[income count] - 1] floatValue];
+        thisMonthExpense = [expense[[expense count] - 1] floatValue];
+        fileExist = YES;
     }
     else
     {
         thisMonthIncome = 0;
         thisMonthExpense = 0;
+        fileExist = NO;
     }
     
 }
 
 - (void)resetData:(NSNotification *) notification
 {
-    self.income.text = [NSString stringWithFormat:@"%.2f",thisMonthIncome];
-    self.expense.text = [NSString stringWithFormat:@"%.2f",thisMonthExpense];
+    [self loadFile];
+    //label数据更新
+    self.incomeLabel.text = [NSString stringWithFormat:@"%.2f",thisMonthIncome];
+    self.expenseLabel.text = [NSString stringWithFormat:@"%.2f",thisMonthExpense];
+    
+    if(fileExist)
+    {
+        //income 图表数据更新
+        for(int i = 0; i < 3; i ++)
+        {
+            NSNumber *temp = [NSNumber numberWithFloat:[income[i] floatValue]];
+            [self.incomeSlices replaceObjectAtIndex:i withObject:temp];
+        }
+        
+        //expense 图表数据更新
+        for(int i = 0; i < 5; i ++)
+        {
+            NSNumber *temp = [NSNumber numberWithInt:[expense[i] floatValue]];
+            [self.expenseSlices replaceObjectAtIndex:i withObject:temp];
+        }
+
+    }
+
 }
+
+- (IBAction)incomeDetailButtonPressed:(UIButton *)sender
+{
+    BINIncomeViewController *incomeView=[[BINIncomeViewController alloc] init];
+    [self.navigationController pushViewController:incomeView animated:YES];
+    [incomeView setData:income setState:fileExist];
+    
+}
+
+- (IBAction)expenseDetailButtonPressed:(UIButton *)sender
+{
+    BINExpenseViewController *expenseView=[[BINExpenseViewController alloc] init];
+    [self.navigationController pushViewController:expenseView animated:YES];
+    [expenseView setData:expense setState:fileExist];
+}
+
 
 #pragma mark - XYPieChart Data Source
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart
 {
-    return self.slices.count;
+    if(pieChart == self.pieChartIncome)
+        return self.incomeSlices.count;
+    else
+        return self.expenseSlices.count;
+
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index
 {
-    return [[self.slices objectAtIndex:index] intValue];
+    if(pieChart == self.pieChartIncome)
+        return [[self.incomeSlices objectAtIndex:index] intValue];
+    else
+        return [[self.expenseSlices objectAtIndex:index] intValue];
+
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 {
-//    if(pieChart == self.pieChartRight) return nil;
-    return [self.sliceColors objectAtIndex:(index % self.sliceColors.count)];
+    if(pieChart == self.pieChartIncome)
+        return [self.incomeSliceColors objectAtIndex:(index % self.incomeSliceColors.count)];
+    else
+        return [self.expenseSliceColors objectAtIndex:(index % self.expenseSliceColors.count)];
+
 }
 
 #pragma mark - XYPieChart Delegate
 - (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index
 {
     NSLog(@"did select slice at index %d",index);
-    //显示相关的内容～～～
-//    self.selectedSliceLabel.text = [NSString stringWithFormat:@"$%@",[self.slices objectAtIndex:index]];
 }
 
 
 
 
 
-- (IBAction)incomeDetailButtonPressed:(id)sender
-{
-    NSLog(@"call");
-    BINExpenseViewController *vc2=[[BINExpenseViewController alloc] init];
-    [self.navigationController pushViewController:vc2 animated:YES];
-//    [self presentModalViewController:vc2 animated:YES];
-}
+
+
+
+
+
 @end

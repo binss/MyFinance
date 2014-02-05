@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3411EF7D18A285F1003A0691 /* showDetailPic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3411EF7C18A285F1003A0691 /* showDetailPic@2x.png */; };
+		3411EF8518A28811003A0691 /* BINCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3411EF8418A28811003A0691 /* BINCalendarViewController.m */; };
+		3411EF8818A28882003A0691 /* BINDayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3411EF8718A28882003A0691 /* BINDayButton.m */; };
+		3411EF8B18A2889A003A0691 /* BINCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3411EF8A18A2889A003A0691 /* BINCalendar.m */; };
+		341B862118A1ED43000DF75B /* BINIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 341B861F18A1ED43000DF75B /* BINIncomeViewController.m */; };
+		341B862218A1ED43000DF75B /* BINIncomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341B862018A1ED43000DF75B /* BINIncomeViewController.xib */; };
 		341FCA8718A133970045BE91 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 341FCA8618A133970045BE91 /* XYPieChart.m */; };
 		341FCA8B18A14CC00045BE91 /* BINExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */; };
 		341FCA8C18A14CC00045BE91 /* BINExpenseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */; };
@@ -44,6 +50,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3411EF7C18A285F1003A0691 /* showDetailPic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "showDetailPic@2x.png"; sourceTree = "<group>"; };
+		3411EF8318A28811003A0691 /* BINCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINCalendarViewController.h; sourceTree = "<group>"; };
+		3411EF8418A28811003A0691 /* BINCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINCalendarViewController.m; sourceTree = "<group>"; };
+		3411EF8618A28882003A0691 /* BINDayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINDayButton.h; sourceTree = "<group>"; };
+		3411EF8718A28882003A0691 /* BINDayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINDayButton.m; sourceTree = "<group>"; };
+		3411EF8918A2889A003A0691 /* BINCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINCalendar.h; sourceTree = "<group>"; };
+		3411EF8A18A2889A003A0691 /* BINCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINCalendar.m; sourceTree = "<group>"; };
+		341B861E18A1ED43000DF75B /* BINIncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINIncomeViewController.h; sourceTree = "<group>"; };
+		341B861F18A1ED43000DF75B /* BINIncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINIncomeViewController.m; sourceTree = "<group>"; };
+		341B862018A1ED43000DF75B /* BINIncomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINIncomeViewController.xib; sourceTree = "<group>"; };
 		341FCA8518A133970045BE91 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		341FCA8618A133970045BE91 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		341FCA8818A14CC00045BE91 /* BINExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINExpenseViewController.h; sourceTree = "<group>"; };
@@ -102,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3411EF7B18A285F1003A0691 /* pic */ = {
+			isa = PBXGroup;
+			children = (
+				3411EF7C18A285F1003A0691 /* showDetailPic@2x.png */,
+			);
+			path = pic;
+			sourceTree = "<group>";
+		};
 		341FCA8418A133970045BE91 /* tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,9 +179,18 @@
 				34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */,
 				34335F50189E1AD800FF00B7 /* BINWriteViewController.m */,
 				34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */,
+				341B861E18A1ED43000DF75B /* BINIncomeViewController.h */,
+				341B861F18A1ED43000DF75B /* BINIncomeViewController.m */,
+				341B862018A1ED43000DF75B /* BINIncomeViewController.xib */,
 				341FCA8818A14CC00045BE91 /* BINExpenseViewController.h */,
 				341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */,
 				341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */,
+				3411EF8318A28811003A0691 /* BINCalendarViewController.h */,
+				3411EF8418A28811003A0691 /* BINCalendarViewController.m */,
+				3411EF8618A28882003A0691 /* BINDayButton.h */,
+				3411EF8718A28882003A0691 /* BINDayButton.m */,
+				3411EF8918A2889A003A0691 /* BINCalendar.h */,
+				3411EF8A18A2889A003A0691 /* BINCalendar.m */,
 				34335F48189E1A3B00FF00B7 /* pic */,
 				34E93E55189E74B7007C790C /* resources */,
 				34335E88189DF4D000FF00B7 /* Supporting Files */,
@@ -207,6 +240,7 @@
 		34E93E55189E74B7007C790C /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				3411EF7B18A285F1003A0691 /* pic */,
 				34E93E56189E74FB007C790C /* thingsDictionary.plist */,
 			);
 			path = resources;
@@ -296,6 +330,8 @@
 				34335F4E189E1A3B00FF00B7 /* write@2x.png in Resources */,
 				34335F33189DFABD00FF00B7 /* BINMainViewController.xib in Resources */,
 				34335F53189E1AD800FF00B7 /* BINWriteViewController.xib in Resources */,
+				341B862218A1ED43000DF75B /* BINIncomeViewController.xib in Resources */,
+				3411EF7D18A285F1003A0691 /* showDetailPic@2x.png in Resources */,
 				34335F4C189E1A3B00FF00B7 /* calendar@2x.png in Resources */,
 				34E93E57189E74FB007C790C /* thingsDictionary.plist in Resources */,
 			);
@@ -316,11 +352,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3411EF8518A28811003A0691 /* BINCalendarViewController.m in Sources */,
 				34335E92189DF4D000FF00B7 /* BINAppDelegate.m in Sources */,
+				3411EF8818A28882003A0691 /* BINDayButton.m in Sources */,
 				341FCA8B18A14CC00045BE91 /* BINExpenseViewController.m in Sources */,
 				34335E8E189DF4D000FF00B7 /* main.m in Sources */,
+				3411EF8B18A2889A003A0691 /* BINCalendar.m in Sources */,
 				34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */,
 				341FCA8718A133970045BE91 /* XYPieChart.m in Sources */,
+				341B862118A1ED43000DF75B /* BINIncomeViewController.m in Sources */,
 				34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
