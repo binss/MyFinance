@@ -39,7 +39,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
                 </viewController>
-                <viewController id="Tjo-ze-kBu">
+                <viewController nibName="BINCalendarViewController" id="Tjo-ze-kBu" customClass="BINCalendarViewController">
                     <tabBarItem key="tabBarItem" title="calendar" image="calendar.png" id="zq2-eE-cK5"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>

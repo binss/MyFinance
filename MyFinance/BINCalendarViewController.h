@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BINCalendar.h"
+#import "BINDayViewController.h"
 
-@interface BINCalendarViewController : UIViewController
+@interface BINCalendarViewController : UIViewController <BINCalendarDelegate>
+{
+    BINCalendar *calendarView;
+
+}
+@property  (strong,nonatomic) NSMutableDictionary *dictionary;
+
 
 @end

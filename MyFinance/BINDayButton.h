@@ -6,8 +6,29 @@
 //  Copyright (c) 2014年 bin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface BINDayButton : NSObject
+
+
+@protocol DayButtonDelegate <NSObject>
+@required
+- (void)dayButtonPressed:(id)sender;
 
 @end
+
+
+@interface BINDayButton : UIButton
+{
+	__unsafe_unretained id <DayButtonDelegate> delegate;
+	NSDate *buttonDate;
+}
+
+@property (nonatomic, assign) id <DayButtonDelegate> delegate;      //weak?
+@property (nonatomic, copy) NSDate *buttonDate;
+
+- (id)initButtonWithFrame:(CGRect)buttonFrame;
+
+
+@end
+
+
