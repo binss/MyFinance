@@ -42,8 +42,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-
+    
+    
     NSBundle *bundle = [NSBundle mainBundle];
     NSURL *plistURL = [bundle URLForResource:@"thingsDictionary"withExtension:@"plist"];
     //加载thingsDictionary.plist
@@ -86,6 +86,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //隐藏导航栏
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self resetTime];
 }
 
@@ -171,7 +173,7 @@
     int totalRow;
     if(![type compare:@"expense"])
     {
-        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%@_%.2f_%@",hour,minute,type,thingSelected,detailSelected,self.moneyField.text.floatValue,self.contentField.text];
+        content = [[NSString alloc] initWithFormat:@"%@_%i:%@_%@_%@_%.2f_%@",type,hour,minute,thingSelected,detailSelected,self.moneyField.text.floatValue,self.contentField.text];
         
         totalRow = [expense count] -1;
         temp = [expense[thingRow] floatValue] + self.moneyField.text.floatValue;
@@ -189,7 +191,7 @@
             case 1: incomeType = @"提款";break;
             case 2: incomeType = @"收益";break;
         }
-        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@_%.2f_%@",hour,minute,type,incomeType,
+        content = [[NSString alloc] initWithFormat:@"%@_%i:%@_%@_%.2f_%@",type,hour,minute,incomeType,
                    self.moneyField.text.floatValue,self.contentField.text];
         totalRow = [income count] -1;
 
@@ -202,7 +204,7 @@
     
     if(![type compare:@"other"])
     {
-        content = [[NSString alloc] initWithFormat:@"%i:%i_%@_%@",hour,minute,type,self.otherContentField.text];
+        content = [[NSString alloc] initWithFormat:@"%@_%i:%@_%@",type,hour,minute,self.otherContentField.text];
     }
     
     [self writeFile:content];
@@ -304,9 +306,16 @@
     month = [dateComponent month];
     day = [dateComponent day];
     hour = [dateComponent hour];
-    minute = [dateComponent minute];
+    int tempMinute = [dateComponent minute];
     
-    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%i",year,month,day,hour,minute];
+    if(tempMinute < 10)
+        minute = [NSString stringWithFormat:@"0%i",tempMinute];
+    else
+        minute = [NSString stringWithFormat:@"%i",tempMinute];
+
+    
+    self.timeLabel.text = [[NSString alloc] initWithFormat:@"%i年%i月%i日 %i:%@",year,month,day,hour,minute];
+
 }
 
 - (NSString *)getDataFilePath:(int)Tyear setMonth:(int)Tmonth
@@ -343,33 +352,6 @@
         expense = [[NSMutableArray alloc] initWithObjects:zero,zero,zero,zero,zero,zero,nil];
     }
 
-
-//    NSString *filePath = [self getDataFilePath:year setMonth:month];
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //检测文件是否存在
-//    {
-//        NSDictionary *monthDataDictionary = [[NSDictionary alloc] initWithContentsOfFile:filePath];
-//        
-//        //获取字典中的所有键，存入allThingNames数组
-//        NSArray *allKeys = [monthDataDictionary allKeys];
-//        for(int i = 0; i < [allKeys count]; i++)
-//        {
-//            NSString *selectedKeyName = allKeys[i];
-//            if(![selectedKeyName compare:@"income"])
-//            {
-//                //记录收入
-//                continue;
-//            }
-//            if(![selectedKeyName compare:@"expense"])
-//            {
-//                //记录支出
-//                continue;
-//            }
-//            NSLog(@"%@",selectedKeyName);
-////            self.detailNames = self.detailNamesDictionary[selectedThingName];
-//
-//        }
-//
-//    }
 }
 
 - (void)writeFile:(NSString *)thing

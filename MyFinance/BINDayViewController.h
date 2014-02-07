@@ -10,10 +10,32 @@
 
 @interface BINDayViewController : UITableViewController
 
-
 @property (nonatomic,retain) NSMutableArray *listData;
-@property (nonatomic,retain) NSArray *listImage;
+
+@property (strong,nonatomic) NSMutableArray *incomeList;
+@property (strong,nonatomic) NSMutableArray *expenseList;
+@property (strong,nonatomic) NSMutableArray *otherList;
+
+@property (strong,nonatomic) NSMutableArray *incomeListIndex;
+@property (strong,nonatomic) NSMutableArray *expenseListIndex;
+@property (strong,nonatomic) NSMutableArray *otherListIndex;
+
+@property (nonatomic,retain) NSMutableIndexSet *delectListIndex;
+
+
+
+@property (strong,nonatomic) NSMutableArray *sections;
+
+@property (strong,nonatomic) NSArray *listImage;
+@property (strong,nonatomic) NSString *filePath;
+
+@property (strong,nonatomic) NSMutableArray * income;
+@property (strong,nonatomic) NSMutableArray * expense;
+
+
+
 //@property (strong,nonatomic) NSString *title;
 
-- (void)setData:(NSString *) title withData:(NSMutableArray *) data;
+
+- (void)setData:(NSString *) title withFilePath:(NSString *) path withData:(NSMutableArray *) data;
 @end

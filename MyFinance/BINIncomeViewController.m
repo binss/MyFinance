@@ -33,6 +33,7 @@
     
     self.title = @"收入统计";
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+
     
     
     self.sliceColors = [NSArray arrayWithObjects:

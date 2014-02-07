@@ -7,6 +7,7 @@
 //
 
 #import "BINCalendarViewController.h"
+#import "BINDayViewController.h"
 
 @interface BINCalendarViewController ()
 
@@ -14,6 +15,7 @@
 
 @implementation BINCalendarViewController
 @synthesize dictionary;
+@synthesize filePath;
 
 - (void)loadView
 {
@@ -32,13 +34,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+    [self.navigationItem setHidesBackButton:YES];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self loadFile];
+    //隐藏导航栏
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+
+    [self loadFile];
 
 }
 
@@ -47,6 +56,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void)dayButtonPressed:(BINDayButton *)button
 {
@@ -60,22 +70,24 @@
 
     NSString *date = [NSString stringWithFormat:@"%i-%i-%i",year,month,day];
     NSMutableArray * array = [dictionary objectForKey:date];
+
     
+    self.hidesBottomBarWhenPushed = YES;
     BINDayViewController *dayView=[[BINDayViewController alloc] init];
     [self.navigationController pushViewController:dayView animated:YES];
-    [dayView setData:date withData:array];
+    [dayView setData:date withFilePath:filePath withData:array];
+    self.hidesBottomBarWhenPushed = NO;
+
 }
 
 - (void)nextButtonPressed
 {
-	NSLog(@"Next...");
     NSLog(@"%d,%d",calendarView.getCurrentYear,calendarView.getCurrentMonth);
     [self loadFile];
 }
 
 - (void)prevButtonPressed
 {
-	NSLog(@"Prev...");
     NSLog(@"%d,%d",calendarView.getCurrentYear,calendarView.getCurrentMonth);
     [self loadFile];
 
@@ -97,26 +109,41 @@
 
 - (void)loadFile
 {
-    NSString *filePath = [self getDataFilePath:calendarView.getCurrentYear setMonth:calendarView.getCurrentMonth];
+    filePath = [self getDataFilePath:calendarView.getCurrentYear setMonth:calendarView.getCurrentMonth];
     
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])     //如果存在
+    //如果当前月份的文件存在，按内容更新界面内容
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
     {
         dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
         NSString *date;
         for(int i=1;i<=31;i++)
         {
             date = [NSString stringWithFormat:@"%i-%i-%i",calendarView.getCurrentYear,calendarView.getCurrentMonth,i];
-            if([dictionary objectForKey:date] != nil)
+            NSArray *dateList = [dictionary objectForKey:date];
+            if(dateList != nil)
             {
-                [calendarView setButtonColor:i];
+                NSLog(@"%i",[dateList count]);
+                if([dateList count])
+                {
+                    [calendarView setButtonColor:[UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1] dayIndex:i];
+                    [calendarView setbuttonEnable:YES dayIndex:i];
+                }
+                else
+                {
+                    [calendarView setButtonColor:[UIColor clearColor] dayIndex:i];
+                    [calendarView setbuttonEnable:NO dayIndex:i];
+                }
             }
         }
+        NSArray *income = [dictionary objectForKey:@"income"];
+        NSArray *expense = [dictionary objectForKey:@"expense"];
+        [calendarView setIncomeAndExpense:[income[[income count] - 1] floatValue] withExpense:[expense[[expense count] - 1] floatValue]];
     
     }
     else
     {
         NSLog(@"找不到当前月份的文件");
+        [calendarView setIncomeAndExpense:0 withExpense:0];
     }
 }
 

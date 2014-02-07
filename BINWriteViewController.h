@@ -23,7 +23,7 @@
 @property int month;
 @property int day;
 @property int hour;
-@property int minute;
+@property NSString * minute;
 
 @property (strong,nonatomic) NSString *type;
 @property (strong,nonatomic) NSString *content;
@@ -31,21 +31,6 @@
 //@property float income;
 @property (strong,nonatomic) NSMutableArray * income;
 @property (strong,nonatomic) NSMutableArray * expense;
-
-//@property float income_0;
-//@property float income_1;
-//@property float income_2;
-//
-////@property float expense;
-//@property float expense_0;
-//@property float expense_1;
-//@property float expense_2;
-//@property float expense_3;
-//@property float expense_4;
-
-
-
-
 
 
 //支出的相关组件

@@ -33,9 +33,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
-
     
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    
+
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector (resetData:) name:@"resetData" object:nil];
     
     NSNumber *zero = [NSNumber numberWithFloat:0.0];
@@ -83,19 +85,19 @@
     [self.pieChartExpense setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
     [self.pieChartExpense setUserInteractionEnabled:NO];
     
-    
-    
-    
+
     [[NSNotificationCenter defaultCenter] postNotificationName:@"resetData" object:nil];
 
-
-
+    
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    
+    //隐藏导航栏
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
     [self.pieChartIncome reloadData];
     [self.pieChartExpense reloadData];
 
@@ -178,17 +180,20 @@
 
 - (IBAction)incomeDetailButtonPressed:(UIButton *)sender
 {
+    self.hidesBottomBarWhenPushed = YES;
     BINIncomeViewController *incomeView=[[BINIncomeViewController alloc] init];
     [self.navigationController pushViewController:incomeView animated:YES];
     [incomeView setData:income setState:fileExist];
-    
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 - (IBAction)expenseDetailButtonPressed:(UIButton *)sender
 {
+    self.hidesBottomBarWhenPushed = YES;
     BINExpenseViewController *expenseView=[[BINExpenseViewController alloc] init];
     [self.navigationController pushViewController:expenseView animated:YES];
     [expenseView setData:expense setState:fileExist];
+    self.hidesBottomBarWhenPushed = NO;
 }
 
 

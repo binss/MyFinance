@@ -19,11 +19,11 @@
 
 @interface BINDayButton : UIButton
 {
-	__unsafe_unretained id <DayButtonDelegate> delegate;
+    __unsafe_unretained id <DayButtonDelegate> delegate;
 	NSDate *buttonDate;
 }
 
-@property (nonatomic, assign) id <DayButtonDelegate> delegate;      //weak?
+@property (assign,nonatomic) id <DayButtonDelegate> delegate;      //weak?
 @property (nonatomic, copy) NSDate *buttonDate;
 
 - (id)initButtonWithFrame:(CGRect)buttonFrame;

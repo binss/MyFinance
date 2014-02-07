@@ -26,7 +26,7 @@
 		cellHeight = frame.size.height / 9.0f;
 		
 		//设置背景
-//		UIColor *bgPatternImage = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"square-paper.png"]];
+//		UIColor *bgPatternImage = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@""]];
 //		self.backgroundColor = bgPatternImage;
 		
 		//添加日历顶部的两个按钮（上一月，下一月）并设置按钮触发调用函数
@@ -47,11 +47,29 @@
 		monthLabel.textAlignment = NSTextAlignmentCenter;
 		monthLabel.backgroundColor = [UIColor clearColor];
 		monthLabel.textColor = [UIColor blackColor];
+        
+        //添加显示当前月份的收入和支出Label
+        CGRect incomeLabelFrame = CGRectMake(0, 360, 150, 100);
+		incomeLabel = [[UILabel alloc] initWithFrame:incomeLabelFrame];
+		incomeLabel.font = [UIFont fontWithName:@"DBLCDTempBlack" size:18];
+		incomeLabel.textAlignment = NSTextAlignmentCenter;
+		incomeLabel.textColor = [UIColor blueColor];
+        
+        CGRect expenseLabelFrame = CGRectMake(170, 360, 150, 100);
+		expenseLabel = [[UILabel alloc] initWithFrame:expenseLabelFrame];
+		expenseLabel.font = [UIFont fontWithName:@"DBLCDTempBlack" size:18];
+		expenseLabel.textAlignment = NSTextAlignmentCenter;
+		expenseLabel.textColor = [UIColor redColor];
+
 		
         //把部件加载到view中
 		[self addSubview: prevBtn];
 		[self addSubview: nextBtn];
 		[self addSubview: monthLabel];
+        [self addSubview: incomeLabel];
+        [self addSubview: expenseLabel];
+
+        
         
 		
 		//添加星期并加载到view中
@@ -96,7 +114,7 @@
     {
 		for(int j = 0; j < 7; j++)
         {
-			CGRect buttonFrame = CGRectMake(j*cellWidth , (i+2)*cellHeight + 20, cellWidth, cellHeight);
+			CGRect buttonFrame = CGRectMake(j*cellWidth , (i+2)*cellHeight + 10, cellWidth, cellHeight);
 			BINDayButton *dayButton = [[BINDayButton alloc] initButtonWithFrame:buttonFrame];
 			dayButton.titleLabel.font = [UIFont fontWithName:calendarFontName size:14];
 			dayButton.delegate = self;
@@ -166,7 +184,6 @@
                 //加入到usefulButtons数组中
                 [usefulButtons addObject:button];
 				
-//				button.enabled = YES;
 				++day;
                 
                 
@@ -232,12 +249,22 @@
     return currentYear;
 }
 
-- (void)setButtonColor:(int) day
+- (void)setButtonColor:(UIColor *) color dayIndex:(int)day
 {
     BINDayButton *button = [usefulButtons objectAtIndex:day-1];
-    button.backgroundColor = [UIColor colorWithRed:246/255.0 green:155/255.0 blue:0/255.0 alpha:1];
-    button.enabled = YES;
+    button.backgroundColor = color;
+}
 
+- (void)setbuttonEnable:(BOOL) enable dayIndex:(int) day
+{
+    BINDayButton *button = [usefulButtons objectAtIndex:day-1];
+    button.enabled = enable;
+}
+
+- (void)setIncomeAndExpense:(float) income withExpense:(float) expense
+{
+    incomeLabel.text = [NSString stringWithFormat:@"收入：%.2f",income];
+    expenseLabel.text = [NSString stringWithFormat:@"支出：%.2f",expense];
 }
 
 @end

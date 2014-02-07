@@ -24,6 +24,8 @@
 	__unsafe_unretained id <BINCalendarDelegate> delegate;
 	NSString *calendarFontName;
 	UILabel *monthLabel;
+    UILabel *incomeLabel;
+    UILabel *expenseLabel;
 	NSMutableArray *dayButtons;
 	NSCalendar *calendar;
 	float calendarWidth;
@@ -44,6 +46,8 @@
 - (void)nextBtnPressed:(id)sender;
 - (int)getCurrentMonth;
 - (int)getCurrentYear;
-- (void)setButtonColor:(int) day;
+- (void)setbuttonEnable:(BOOL) enable dayIndex:(int) day;
+- (void)setButtonColor:(UIColor *) color dayIndex:(int)day;
+- (void)setIncomeAndExpense:(float) income withExpense:(float) expense;
 
 @end
