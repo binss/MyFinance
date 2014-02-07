@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3403452C18A506B100D66078 /* BINWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403452A18A506B100D66078 /* BINWriteViewController.m */; };
+		3403452D18A506B100D66078 /* BINWriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3403452B18A506B100D66078 /* BINWriteViewController.xib */; };
+		3403453118A5071900D66078 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3403452E18A5071900D66078 /* calendar@2x.png */; };
+		3403453218A5071900D66078 /* main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3403452F18A5071900D66078 /* main@2x.png */; };
+		3403453318A5071900D66078 /* write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3403453018A5071900D66078 /* write@2x.png */; };
 		340EB6BF18A3281E009C9B34 /* left-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 340EB6BD18A3281E009C9B34 /* left-arrow@2x.png */; };
 		340EB6C018A3281E009C9B34 /* right-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 340EB6BE18A3281E009C9B34 /* right-arrow@2x.png */; };
 		340EB6D318A362EC009C9B34 /* BINDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 340EB6D218A362EC009C9B34 /* BINDayViewController.m */; };
@@ -34,11 +39,6 @@
 		34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34335F30189DFABD00FF00B7 /* BINMainViewController.m */; };
 		34335F33189DFABD00FF00B7 /* BINMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F31189DFABD00FF00B7 /* BINMainViewController.xib */; };
 		34335F37189E10BB00FF00B7 /* BINTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F36189E10BB00FF00B7 /* BINTabBarController.xib */; };
-		34335F4C189E1A3B00FF00B7 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F49189E1A3B00FF00B7 /* calendar@2x.png */; };
-		34335F4D189E1A3B00FF00B7 /* main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F4A189E1A3B00FF00B7 /* main@2x.png */; };
-		34335F4E189E1A3B00FF00B7 /* write@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34335F4B189E1A3B00FF00B7 /* write@2x.png */; };
-		34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34335F50189E1AD800FF00B7 /* BINWriteViewController.m */; };
-		34335F53189E1AD800FF00B7 /* BINWriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */; };
 		34E93E57189E74FB007C790C /* thingsDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E93E56189E74FB007C790C /* thingsDictionary.plist */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3403452918A506B100D66078 /* BINWriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINWriteViewController.h; sourceTree = "<group>"; };
+		3403452A18A506B100D66078 /* BINWriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINWriteViewController.m; sourceTree = "<group>"; };
+		3403452B18A506B100D66078 /* BINWriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINWriteViewController.xib; sourceTree = "<group>"; };
+		3403452E18A5071900D66078 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		3403452F18A5071900D66078 /* main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main@2x.png"; sourceTree = "<group>"; };
+		3403453018A5071900D66078 /* write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write@2x.png"; sourceTree = "<group>"; };
 		340EB6BD18A3281E009C9B34 /* left-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow@2x.png"; sourceTree = "<group>"; };
 		340EB6BE18A3281E009C9B34 /* right-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow@2x.png"; sourceTree = "<group>"; };
 		340EB6D118A362EC009C9B34 /* BINDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BINDayViewController.h; sourceTree = "<group>"; };
@@ -92,12 +98,6 @@
 		34335F30189DFABD00FF00B7 /* BINMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BINMainViewController.m; sourceTree = "<group>"; };
 		34335F31189DFABD00FF00B7 /* BINMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINMainViewController.xib; sourceTree = "<group>"; };
 		34335F36189E10BB00FF00B7 /* BINTabBarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BINTabBarController.xib; sourceTree = "<group>"; };
-		34335F49189E1A3B00FF00B7 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
-		34335F4A189E1A3B00FF00B7 /* main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main@2x.png"; sourceTree = "<group>"; };
-		34335F4B189E1A3B00FF00B7 /* write@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "write@2x.png"; sourceTree = "<group>"; };
-		34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BINWriteViewController.h; path = ../BINWriteViewController.h; sourceTree = "<group>"; };
-		34335F50189E1AD800FF00B7 /* BINWriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BINWriteViewController.m; path = ../BINWriteViewController.m; sourceTree = "<group>"; };
-		34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BINWriteViewController.xib; path = ../BINWriteViewController.xib; sourceTree = "<group>"; };
 		34E93E56189E74FB007C790C /* thingsDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = thingsDictionary.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				340EB6BD18A3281E009C9B34 /* left-arrow@2x.png */,
+				3403452E18A5071900D66078 /* calendar@2x.png */,
+				3403452F18A5071900D66078 /* main@2x.png */,
+				3403453018A5071900D66078 /* write@2x.png */,
 				340EB6BE18A3281E009C9B34 /* right-arrow@2x.png */,
 				3411EF7C18A285F1003A0691 /* showDetailPic@2x.png */,
 			);
@@ -185,15 +188,15 @@
 				34335F2F189DFABD00FF00B7 /* BINMainViewController.h */,
 				34335F30189DFABD00FF00B7 /* BINMainViewController.m */,
 				34335F31189DFABD00FF00B7 /* BINMainViewController.xib */,
-				34335F4F189E1AD800FF00B7 /* BINWriteViewController.h */,
-				34335F50189E1AD800FF00B7 /* BINWriteViewController.m */,
-				34335F51189E1AD800FF00B7 /* BINWriteViewController.xib */,
 				341B861E18A1ED43000DF75B /* BINIncomeViewController.h */,
 				341B861F18A1ED43000DF75B /* BINIncomeViewController.m */,
 				341B862018A1ED43000DF75B /* BINIncomeViewController.xib */,
 				341FCA8818A14CC00045BE91 /* BINExpenseViewController.h */,
 				341FCA8918A14CC00045BE91 /* BINExpenseViewController.m */,
 				341FCA8A18A14CC00045BE91 /* BINExpenseViewController.xib */,
+				3403452918A506B100D66078 /* BINWriteViewController.h */,
+				3403452A18A506B100D66078 /* BINWriteViewController.m */,
+				3403452B18A506B100D66078 /* BINWriteViewController.xib */,
 				3411EF8618A28882003A0691 /* BINDayButton.h */,
 				3411EF8718A28882003A0691 /* BINDayButton.m */,
 				3411EF8918A2889A003A0691 /* BINCalendar.h */,
@@ -202,7 +205,6 @@
 				3411EF8418A28811003A0691 /* BINCalendarViewController.m */,
 				340EB6D118A362EC009C9B34 /* BINDayViewController.h */,
 				340EB6D218A362EC009C9B34 /* BINDayViewController.m */,
-				34335F48189E1A3B00FF00B7 /* pic */,
 				34E93E55189E74B7007C790C /* resources */,
 				34335E88189DF4D000FF00B7 /* Supporting Files */,
 			);
@@ -237,16 +239,6 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
-		};
-		34335F48189E1A3B00FF00B7 /* pic */ = {
-			isa = PBXGroup;
-			children = (
-				34335F49189E1A3B00FF00B7 /* calendar@2x.png */,
-				34335F4A189E1A3B00FF00B7 /* main@2x.png */,
-				34335F4B189E1A3B00FF00B7 /* write@2x.png */,
-			);
-			path = pic;
-			sourceTree = SOURCE_ROOT;
 		};
 		34E93E55189E74B7007C790C /* resources */ = {
 			isa = PBXGroup;
@@ -333,19 +325,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3403452D18A506B100D66078 /* BINWriteViewController.xib in Resources */,
 				34335E8C189DF4D000FF00B7 /* InfoPlist.strings in Resources */,
 				341FCA8C18A14CC00045BE91 /* BINExpenseViewController.xib in Resources */,
 				34335F37189E10BB00FF00B7 /* BINTabBarController.xib in Resources */,
+				3403453318A5071900D66078 /* write@2x.png in Resources */,
 				34335E94189DF4D000FF00B7 /* Images.xcassets in Resources */,
-				34335F4D189E1A3B00FF00B7 /* main@2x.png in Resources */,
-				34335F4E189E1A3B00FF00B7 /* write@2x.png in Resources */,
 				34335F33189DFABD00FF00B7 /* BINMainViewController.xib in Resources */,
 				340EB6C018A3281E009C9B34 /* right-arrow@2x.png in Resources */,
-				34335F53189E1AD800FF00B7 /* BINWriteViewController.xib in Resources */,
 				341B862218A1ED43000DF75B /* BINIncomeViewController.xib in Resources */,
 				3411EF7D18A285F1003A0691 /* showDetailPic@2x.png in Resources */,
+				3403453218A5071900D66078 /* main@2x.png in Resources */,
 				340EB6BF18A3281E009C9B34 /* left-arrow@2x.png in Resources */,
-				34335F4C189E1A3B00FF00B7 /* calendar@2x.png in Resources */,
+				3403453118A5071900D66078 /* calendar@2x.png in Resources */,
 				34E93E57189E74FB007C790C /* thingsDictionary.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,9 +364,9 @@
 				341FCA8B18A14CC00045BE91 /* BINExpenseViewController.m in Sources */,
 				34335E8E189DF4D000FF00B7 /* main.m in Sources */,
 				3411EF8B18A2889A003A0691 /* BINCalendar.m in Sources */,
-				34335F52189E1AD800FF00B7 /* BINWriteViewController.m in Sources */,
 				341FCA8718A133970045BE91 /* XYPieChart.m in Sources */,
 				341B862118A1ED43000DF75B /* BINIncomeViewController.m in Sources */,
+				3403452C18A506B100D66078 /* BINWriteViewController.m in Sources */,
 				34335F32189DFABD00FF00B7 /* BINMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
