@@ -208,8 +208,9 @@
     }
     
     [self writeFile:content];
-    
-    
+    [self resetContent];
+    [self resetTime];
+
     
 }
 
